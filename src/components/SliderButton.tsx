@@ -13,12 +13,12 @@ export default function SliderButton({ text, duration, ...props }: RippleButtonP
   };
 
   return (
-    <motion.div initial="initial" whileHover="hover">
+    <motion.div initial="initial" whileHover="hover" whileTap={{ scale: 0.95 }}>
       <Button
         size="3"
         radius="full"
         variant="solid"
-        className="relative overflow-hidden brightness-100 shadow-lg shadow-(color:--gray-8)"
+        className="group relative overflow-hidden brightness-100 shadow-lg shadow-(color:--gray-8)"
         onClick={handleClick}
       >
         <Text weight="medium" className="z-10">

@@ -8,7 +8,7 @@ import Card from "./components/Card";
 function App() {
   return (
     <>
-      <Theme accentColor="blue" grayColor="gray" appearance="inherit">
+      <Theme accentColor="blue" grayColor="gray" appearance="dark" className="p-4">
         <Flex gap={"3"} wrap={"wrap"}>
           <Card title="Ripple Button">
             <RippleButton text={"Ripple Button"} duration={1500} />

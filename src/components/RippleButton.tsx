@@ -37,36 +37,38 @@ export default function RippleButton({ text, duration, ...props }: RippleButtonP
   };
 
   return (
-    <Button
-      size="3"
-      radius="full"
-      variant="solid"
-      className="relative overflow-hidden brightness-100 shadow-lg shadow-(color:--gray-8)" // radix ui has a button active filter to reduce the brightness
-      onClick={handleClick}
-    >
-      <Text weight="medium" className="z-10">
-        {text}
-      </Text>
-      <AnimatePresence>
-        {ripples.map((ripple) => (
-          <motion.span
-            key={ripple.id}
-            initial={{ scale: 0, opacity: 1, x: "-50%", y: "-50%" }}
-            animate={{ scale: 1, opacity: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: duration / 1000, ease: "easeOut" }}
-            style={{
-              position: "absolute",
-              background: "var(--accent-12)",
-              left: ripple.x,
-              top: ripple.y,
-              width: ripple.size,
-              height: ripple.size,
-              borderRadius: "100%",
-            }}
-          />
-        ))}
-      </AnimatePresence>
-    </Button>
+    <motion.div whileTap={{ scale: 0.95 }}>
+      <Button
+        size="3"
+        radius="full"
+        variant="solid"
+        className="relative overflow-hidden brightness-100 shadow-lg shadow-(color:--gray-8) transition-colors duration-1000" // radix ui has a button active filter to reduce the brightness
+        onClick={handleClick}
+      >
+        <Text weight="medium" className="z-10">
+          {text}
+        </Text>
+        <AnimatePresence>
+          {ripples.map((ripple) => (
+            <motion.span
+              key={ripple.id}
+              initial={{ scale: 0, opacity: 1, x: "-50%", y: "-50%" }}
+              animate={{ scale: 1, opacity: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: duration / 1000, ease: "easeOut" }}
+              style={{
+                position: "absolute",
+                background: "var(--accent-12)",
+                left: ripple.x,
+                top: ripple.y,
+                width: ripple.size,
+                height: ripple.size,
+                borderRadius: "100%",
+              }}
+            />
+          ))}
+        </AnimatePresence>
+      </Button>
+    </motion.div>
   );
 }

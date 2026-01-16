@@ -5,11 +5,17 @@ import RippleButton from "./components/RippleButton";
 import SliderButton from "./components/SliderButton";
 import RadialGradientButton from "./components/RadialGradientButton";
 import Card from "./components/Card";
+import FoldingLetter from "./components/FoldingLetter";
 
 function App() {
   return (
     <>
-      <Theme accentColor="blue" grayColor="gray" appearance="inherit" className="p-4">
+      <Theme
+        accentColor="blue"
+        grayColor="gray"
+        appearance="inherit"
+        className="p-4 bg-gray-100"
+      >
         <Flex gap={"3"} wrap={"wrap"}>
           <Card title="Ripple Button">
             <RippleButton text={"Ripple Button"} duration={1500} />
@@ -20,6 +26,9 @@ function App() {
           <Card title="Radial Gradient Button">
             <RadialGradientButton text={"Gradient Button"} duration={1000} />
           </Card>
+          {/* <Card title="Folding letter"> */}
+          <FoldingLetter />
+          {/* </Card> */}
         </Flex>
       </Theme>
     </>

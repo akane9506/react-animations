@@ -7,20 +7,11 @@ type CardProps = {
 
 export default function Card({ title, children }: CardProps) {
   return (
-    <Box className="w-fit p-0.5 rounded-[18px] flex flex-col gap-1 justify-between bg-linear-to-b from-(--accent-1) to-(--accent-9) shadow-xs hover:from-(--accent-9) transition-colors duration-200">
-      <Box
-        className="relative z-10 w-70 h-70 flex justify-center items-center rounded-2xl bg-(--color-background) bg-[radial-gradient(circle,var(--gray-4)_1px,transparent_1px)] 
-bg-size-[12px_12px] "
-      >
+    <Box className="w-fit h-70 p-2 rounded-3xl flex flex-col gap-1 justify-start shadow-xl bg-white">
+      <Box className="relative z-10 w-70 h-50 flex justify-center items-center rounded-2xl bg-(--gray-3)">
         {children}
       </Box>
-      <Text
-        weight="bold"
-        size="2"
-        align="center"
-        as="p"
-        className="text-(--accent-1) py-0.5"
-      >
+      <Text weight="bold" size="2" align="left" as="p" className="text-gray-600 py-0.5">
         {title}
       </Text>
     </Box>

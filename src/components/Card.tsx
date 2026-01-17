@@ -42,7 +42,7 @@ export default function Card({
           </div>
           <MessageSquareQuote
             size={40}
-            className="stroke-1 p-1 bg-muted-foreground rounded-full stroke-background hover:bg-accent hover:stroke-primary transition-colors duration-150"
+            className="stroke-2 p-1.5 bg-muted-foreground rounded-full stroke-background hover:bg-accent hover:stroke-primary transition-colors duration-150"
           />
         </section>
       </div>

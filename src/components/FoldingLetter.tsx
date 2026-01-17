@@ -102,43 +102,44 @@ export default function FoldingLetter() {
         <div ref={measureRef} className={cn(measurerStyle, "fixed top-0 left-100")} />
       )}
       <div onClick={() => setIsExpanded((prev) => !prev)}>
-        {pages.slice(0, 3).map((content, index) => {
-          const top = isExpanded
-            ? pageHeight * index + pagePadding // Page 0: -160, Page 1: 0, Page 2: 160
-            : pagePadding; // All pages at center when folded
-          const initialRotateX = index === 1 ? -180 : 0;
-          return (
-            <motion.div
-              key={`${content.slice(0, 10)}-${index}`}
-              className={cn(
-                "absolute left-0 overflow-hidden backface-hidden bg-background",
-                index === 1 && middlePageGradient,
-                measurerStyle
-              )}
-              initial={{
-                top: top,
-                left: 0,
-                rotateX: initialRotateX,
-              }}
-              animate={{
-                top: top,
-                rotateX: isExpanded ? 0 : index === 1 ? -180 : 0,
-                zIndex: 2 - index,
-              }}
-              transition={{
-                type: "spring",
-                bounce: isExpanded ? 0.15 : 0,
-                visualDuration: index === 2 ? 0.45 : 0.5,
-              }}
-              style={{
-                transformStyle: "preserve-3d",
-                transformOrigin: "center",
-              }}
-            >
-              {content}
-            </motion.div>
-          );
-        })}
+        {!isPending &&
+          pages.slice(0, 3).map((content, index) => {
+            const top = isExpanded
+              ? pageHeight * index + pagePadding // Page 0: -160, Page 1: 0, Page 2: 160
+              : pagePadding; // All pages at center when folded
+            const initialRotateX = index === 1 ? -180 : 0;
+            return (
+              <motion.div
+                key={`${content.slice(0, 10)}-${index}`}
+                className={cn(
+                  "absolute left-0 overflow-hidden backface-hidden bg-background",
+                  index === 1 && middlePageGradient,
+                  measurerStyle
+                )}
+                initial={{
+                  top: top,
+                  left: 0,
+                  rotateX: initialRotateX,
+                  zIndex: 2 - index,
+                }}
+                animate={{
+                  top: top,
+                  rotateX: isExpanded ? 0 : index === 1 ? -180 : 0,
+                }}
+                transition={{
+                  type: "spring",
+                  bounce: isExpanded ? 0.15 : 0,
+                  visualDuration: index === 2 ? 0.45 : 0.5,
+                }}
+                style={{
+                  transformStyle: "preserve-3d",
+                  transformOrigin: "center",
+                }}
+              >
+                {content}
+              </motion.div>
+            );
+          })}
       </div>
     </motion.div>
   );

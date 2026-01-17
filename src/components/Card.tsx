@@ -1,19 +1,53 @@
-import { Box, Text } from "@radix-ui/themes";
+import * as React from "react";
 import type { PropsWithChildren } from "react";
+import { cn } from "@/lib/utils";
+import { Separator } from "@/components/ui/separator";
+import { MessageSquareQuote } from "lucide-react";
 
 type CardProps = {
   title: string;
-} & PropsWithChildren;
+  description: string;
+  contentClassName?: string;
+} & PropsWithChildren<React.HTMLAttributes<HTMLDivElement>>;
 
-export default function Card({ title, children }: CardProps) {
+export default function Card({
+  title,
+  description,
+  contentClassName,
+  className,
+  children,
+  ...props
+}: CardProps) {
   return (
-    <Box className="w-fit h-70 p-2 rounded-3xl flex flex-col gap-1 justify-start shadow-xl bg-white">
-      <Box className="relative z-10 w-70 h-50 flex justify-center items-center rounded-2xl bg-(--gray-3)">
-        {children}
-      </Box>
-      <Text weight="bold" size="2" align="left" as="p" className="text-gray-600 py-0.5">
-        {title}
-      </Text>
-    </Box>
+    <div
+      className={cn(
+        "rounded-3xl flex flex-col gap-1 justify-start shadow-xl bg-white",
+        className
+      )}
+      {...props}
+    >
+      <div className="p-2 space-y-3">
+        <section
+          className={cn(
+            "relative bg-accent rounded-2xl flex justify-center items-center overflow-hidden",
+            contentClassName
+          )}
+        >
+          {children}
+        </section>
+        <section className="px-4 flex justify-between items-center">
+          <div className="space-y-2">
+            <h3 className="font-semibold">{title}</h3>
+            <p className="text-sm/4 text-muted-foreground">{description}</p>
+          </div>
+          <MessageSquareQuote
+            size={40}
+            className="stroke-1 p-1 bg-muted-foreground rounded-full stroke-background hover:bg-accent hover:stroke-primary transition-colors duration-150"
+          />
+        </section>
+      </div>
+      <Separator />
+      <div className="my-3 p-2">Tags</div>
+    </div>
   );
 }

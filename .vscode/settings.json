@@ -1,0 +1,8 @@
+{
+  "tailwindCSS.classFunctions": ["tw", "clsx", "tw\\.[a-z-]+", "cn"],
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    ".*ClassName"
+  ]
+}

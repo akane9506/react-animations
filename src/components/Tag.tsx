@@ -4,6 +4,6 @@ type TagType = {
 
 export default function Tag({ tagName }: TagType) {
   return (
-    <div className="text-xs rounded-full bg-primary text-accent px-2 py-1">{tagName}</div>
+    <div className="text-xs rounded-full bg-primary text-accent px-3 py-1">{tagName}</div>
   );
 }

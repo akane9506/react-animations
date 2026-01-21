@@ -43,7 +43,9 @@ export default function Card({
       <div className="px-4 flex justify-between items-center gap-3 mb-3">
         <div className="space-y-1">
           <h3 className="font-semibold">{title}</h3>
-          <p className="text-sm/4 tracking-tight text-muted-foreground">{description}</p>
+          <p className="text-xs/tight tracking-tight text-muted-foreground">
+            {description}
+          </p>
         </div>
         <Button
           variant={"outline"}
@@ -53,7 +55,7 @@ export default function Card({
         </Button>
       </div>
       <Separator />
-      <div className="my-3 px-4 flex flex-row-reverse gap-2">
+      <div className="my-3 px-4 flex flex-row-reverse gap-1">
         {tags.map((tagName) => (
           <Tag key={title + tagName} tagName={tagName} />
         ))}
